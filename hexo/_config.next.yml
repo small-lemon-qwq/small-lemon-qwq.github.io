@@ -3,7 +3,7 @@ giscus:
   repo: small-lemon-qwq/small-lemon-qwq.github.io
   repo_id: R_kgDONhUWvg
   category: General
-  category_id: DIC_kwDONhUWvs4DBPYoq
+  category_id: DIC_kwDONhUWvs4DBPYq
   mapping: pathname
   reactions_enabled: 1
   emit_metadata: 0
