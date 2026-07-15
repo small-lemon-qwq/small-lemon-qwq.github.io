@@ -1,13 +1,14 @@
 giscus:
-  enable: true
-  repo: small-lemon-qwq/small-lemon-qwq.github.io
-  repo_id: R_kgDONhUWvg
-  category: General
-  category_id: DIC_kwDONhUWvs4DBPYoq
-  mapping: pathname
-  reactions_enabled: 1
-  emit_metadata: 0
-  theme: preferred_color_scheme
-  lang: zh-CN
-  input_position: bottom
-  loading: lazy
+  data-repo: small-lemon-qwq/small-lemon-qwq.github.io
+  data-repo-id: R_kgDONhUWvg
+  data-category: General
+  data-category-id: DIC_kwDONhUWvs4DBPYq
+  data-mapping: pathname
+  data-strict: 0
+  data-reactions-enabled: 1
+  data-emit-metadata: 0
+  data-input-position: bottom
+  data-theme: preferred_color_scheme
+  data-lang: zh-CN
+  data-loading: lazy
+  crossorigin: anonymous
