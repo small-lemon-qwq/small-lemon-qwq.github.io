@@ -1,0 +1,23 @@
+giscus:
+  enable: true
+
+  repo: small-lemon-qwq/small-lemon-qwq.github.io
+
+  # 从 giscus 配置页面复制
+  repo_id: small-lemon-qwq/small-lemon-qwq.github.io
+
+  category: Announcements
+
+  # 从 giscus 配置页面复制
+  category_id: DIC_kwDONhUWvs4DBPYoq
+
+  mapping: pathname
+
+  reactions_enabled: 1
+  emit_metadata: 0
+
+  theme: preferred_color_scheme
+  lang: zh-CN
+
+  input_position: bottom
+  loading: lazy
