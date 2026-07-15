@@ -1,7 +1,7 @@
 ---
 title: 题解：由乃救爷爷
 date: 2026-07-15 20:32:39
-tags:
+tags: [algorithm]
 mathjax: true
 ---
 来发个 ST 表题解。
