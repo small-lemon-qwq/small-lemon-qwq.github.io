@@ -53,7 +53,22 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
+      - name: Generate Hexo site
+        working-directory: ./hexo
+        run: npx hexo clean && npx hexo generate
 
+      - name: Verify generated Hexo files
+        run: |
+          echo "=== Hexo public files ==="
+          find ./hexo/public -maxdepth 3 -type f | head -100
+
+          test -s ./hexo/public/index.html || {
+            echo "::error::hexo/public/index.html does not exist or is empty"
+            exit 1
+          }
+
+          echo "index.html size:"
+          wc -c ./hexo/public/index.html
   deploy:
     environment:
       name: github-pages
