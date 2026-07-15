@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
@@ -33,6 +33,21 @@ jobs:
       - name: Install npm 11.7.0
         run: npm install --global npm@11.7.0
 
+      - name: Install Pandoc
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install \
+            --yes \
+            --no-install-recommends \
+            pandoc
+
+          echo "Pandoc executable:"
+          command -v pandoc
+
+          echo "Pandoc version:"
+          pandoc --version
+
       - name: Show build environment
         working-directory: ./hexo
         run: |
@@ -42,6 +57,9 @@ jobs:
           echo "npm:"
           npm --version
 
+          echo "Pandoc:"
+          pandoc --version
+
       - name: Install Hexo dependencies
         working-directory: ./hexo
         run: npm ci
@@ -50,9 +68,20 @@ jobs:
         working-directory: ./hexo
         run: |
           npx hexo version
+
+          echo "=== Hexo packages ==="
           npm ls hexo || true
           npm ls hexo-theme-next || true
           npm ls hexo-next-giscus || true
+
+          echo "=== Markdown renderers ==="
+          npm ls hexo-renderer-pandoc || true
+          npm ls hexo-renderer-marked || true
+          npm ls hexo-renderer-markdown-it || true
+
+          echo "=== Math rendering packages ==="
+          npm ls hexo-filter-mathjax || true
+          npm ls hexo-renderer-mathjax || true
 
       - name: Generate Hexo website
         working-directory: ./hexo
@@ -64,7 +93,9 @@ jobs:
         shell: bash
         run: |
           echo "=== Generated Hexo files ==="
-          find ./hexo/public -maxdepth 4 -type f | sort | head -200
+          find ./hexo/public -maxdepth 4 -type f \
+            | sort \
+            | head -200
 
           if [ ! -f ./hexo/public/index.html ]; then
             echo "::error::hexo/public/index.html does not exist"
@@ -81,8 +112,11 @@ jobs:
           fi
 
           echo "=== HTML sizes ==="
-          find ./hexo/public -type f -name "*.html" \
-            -printf "%10s bytes  %p\n" | sort -n
+          find ./hexo/public \
+            -type f \
+            -name "*.html" \
+            -printf "%10s bytes  %p\n" \
+            | sort -n
 
           echo "=== First 20 lines of Hexo index.html ==="
           sed -n '1,20p' ./hexo/public/index.html
@@ -101,7 +135,7 @@ jobs:
             echo "::warning::site/ directory does not exist"
           fi
 
-          # 将 Hexo 放到 /hexo/ 路径
+          # 将 Hexo 网站复制到 /hexo/ 路径
           cp -a ./hexo/public/. ./dist/hexo/
 
           # 禁止 GitHub Pages 使用 Jekyll 再次处理文件
@@ -111,7 +145,9 @@ jobs:
         shell: bash
         run: |
           echo "=== Deployment files ==="
-          find ./dist -maxdepth 4 -type f | sort | head -300
+          find ./dist -maxdepth 4 -type f \
+            | sort \
+            | head -300
 
           if [ ! -s ./dist/hexo/index.html ]; then
             echo "::error::dist/hexo/index.html is missing or empty"
@@ -137,7 +173,7 @@ jobs:
           path: ./dist
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
 
     environment:
