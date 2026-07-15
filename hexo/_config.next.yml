@@ -11,3 +11,11 @@ giscus:
   lang: zh-CN
   input_position: bottom
   loading: lazy
+math:
+  every_page: true
+  mathjax:
+    enable: true
+    tags: none
+  katex:
+    enable: false
+    copy_tex: false
