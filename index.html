@@ -46,7 +46,7 @@
 				.split("; ")
 				.some(item => item.startsWith(name + "="));
 		}
-		if(!hasCookie("no-script")){
+		if(hasCookie("on-script")){
 			setInterval(()=>{
 				fetch(`https://www.luogu.com.cn/api/verify/captcha?_t=${Math.floor(Math.random()*100000)}`, {
 				"headers": {
