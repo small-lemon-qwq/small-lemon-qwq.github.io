@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: QWQ
+subtitle: 'Welcome!'
+description: 'Nice to meet you'
 keywords:
-author: John Doe
-language: en
-timezone: ''
+author: small_lemon_qwq
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
