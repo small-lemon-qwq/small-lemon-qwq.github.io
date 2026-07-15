@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: github-pages
   cancel-in-progress: true
 
 jobs:
@@ -22,11 +22,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: hexo/package-lock.json
 
@@ -36,15 +38,79 @@ jobs:
 
       - name: Generate Hexo site
         working-directory: ./hexo
-        run: npx hexo clean && npx hexo generate
+        run: |
+          npx hexo clean
+          npx hexo generate
+
+      - name: Verify Hexo output
+        run: |
+          echo "=== Generated Hexo files ==="
+          find ./hexo/public -maxdepth 3 -type f | sort | head -100
+
+          echo "=== Generated file sizes ==="
+          find ./hexo/public -maxdepth 2 -type f \
+            -printf "%10s bytes  %p\n" | sort -n | head -100
+
+          if [ ! -f ./hexo/public/index.html ]; then
+            echo "::error::hexo/public/index.html does not exist"
+            exit 1
+          fi
+
+          HEXO_INDEX_SIZE=$(stat -c%s ./hexo/public/index.html)
+          echo "Hexo index.html size: ${HEXO_INDEX_SIZE} bytes"
+
+          if [ "${HEXO_INDEX_SIZE}" -eq 0 ]; then
+            echo "::error::Hexo generated an empty public/index.html"
+            echo "This is a Hexo/theme/plugin rendering problem, not a Pages upload problem."
+            exit 1
+          fi
+
+          echo "=== First 30 lines of Hexo index.html ==="
+          sed -n '1,30p' ./hexo/public/index.html
 
       - name: Prepare deployment directory
         run: |
+          rm -rf ./dist
           mkdir -p ./dist
-          cp -a ./site/. ./dist/
           mkdir -p ./dist/hexo
+
+          # 复制个人主页
+          if [ -d ./site ]; then
+            cp -a ./site/. ./dist/
+          else
+            echo "::warning::site/ directory does not exist; root site will have no custom homepage."
+          fi
+
+          # 复制 Hexo 生成结果到 /hexo/
           cp -a ./hexo/public/. ./dist/hexo/
+
+          # 禁用 GitHub Pages 的 Jekyll 处理
           touch ./dist/.nojekyll
+
+      - name: Verify final deployment directory
+        run: |
+          echo "=== Final deployment files ==="
+          find ./dist -maxdepth 3 -type f | sort | head -200
+
+          if [ ! -s ./dist/hexo/index.html ]; then
+            echo "::error::dist/hexo/index.html does not exist or is empty"
+            exit 1
+          fi
+
+          if [ -f ./site/index.html ] && [ ! -s ./dist/index.html ]; then
+            echo "::error::site/index.html was not copied correctly"
+            exit 1
+          fi
+
+          echo "Root index size:"
+          if [ -f ./dist/index.html ]; then
+            wc -c ./dist/index.html
+          else
+            echo "No root index.html"
+          fi
+
+          echo "Hexo index size:"
+          wc -c ./dist/hexo/index.html
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
@@ -53,22 +119,7 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
-      - name: Generate Hexo site
-        working-directory: ./hexo
-        run: npx hexo clean && npx hexo generate
 
-      - name: Verify generated Hexo files
-        run: |
-          echo "=== Hexo public files ==="
-          find ./hexo/public -maxdepth 3 -type f | head -100
-
-          test -s ./hexo/public/index.html || {
-            echo "::error::hexo/public/index.html does not exist or is empty"
-            exit 1
-          }
-
-          echo "index.html size:"
-          wc -c ./hexo/public/index.html
   deploy:
     environment:
       name: github-pages
