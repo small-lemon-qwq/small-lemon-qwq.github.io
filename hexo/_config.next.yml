@@ -2,7 +2,7 @@ giscus:
   enable: true
   repo: small-lemon-qwq/small-lemon-qwq.github.io
   repo_id: R_kgDONhUWvg
-  category: Announcements
+  category: General
   category_id: DIC_kwDONhUWvs4DBPYoq
   mapping: pathname
   reactions_enabled: 1
