@@ -1,3 +1,5 @@
+custom_file_path:
+  style: source/_data/styles.styl
 giscus:
   enable: true
   repo: small-lemon-qwq/small-lemon-qwq.github.io
