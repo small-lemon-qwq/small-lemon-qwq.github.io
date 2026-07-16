@@ -43,7 +43,7 @@ codeblock:
     style: default
   fold:
     enable: false
-    height: 100
+    height: 500
   language: true
 back2top:
   enable: true
