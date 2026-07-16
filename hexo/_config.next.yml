@@ -20,7 +20,7 @@ math:
     enable: false
     copy_tex: false
 excerpt_description: true
-read_more_bn: true
+read_more_btn: true
 reading_progress:
   enable: true
 sidebar:
