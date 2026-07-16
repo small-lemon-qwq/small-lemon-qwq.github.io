@@ -5,7 +5,7 @@
 # Site
 title: QWQ
 subtitle: 'Welcome!'
-description: 'Nice to meet you'
+description: '你好呀'
 keywords:
 author: small_lemon_qwq
 language: zh-CN
@@ -46,9 +46,12 @@ relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
-  line_number: true
   auto_detect: false
+  line_number: true
+  line_threshold: 0
   tab_replace: ''
+  exclude_languages:
+    - example
   wrap: true
   hljs: false
 prismjs:

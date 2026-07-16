@@ -19,3 +19,34 @@ math:
   katex:
     enable: false
     copy_tex: false
+excerpt_description: true
+read_more_bn: true
+reading_progress:
+  enable: true
+sidebar:
+  display: hide
+scheme: Muse
+social:
+  GitHub: https://github.com/Cloudspots || fab fa-github
+post_navigation: false
+codeblock:
+  theme:
+    light: default
+    dark: stackoverflow-dark
+  prism:
+    light: prism
+    dark: prism-dark
+  copy_button:
+    enable: true
+    style: default
+  fold:
+    enable: false
+    height: 100
+  language: true
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: true
+fancybox: true
+mediumzoom: false
+lazyload: false
