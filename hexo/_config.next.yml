@@ -27,7 +27,7 @@ reading_progress:
   enable: true
 sidebar:
   display: hide
-scheme: Muse
+scheme: Gemini
 social:
   GitHub: https://github.com/Cloudspots || fab fa-github
 post_navigation: false
