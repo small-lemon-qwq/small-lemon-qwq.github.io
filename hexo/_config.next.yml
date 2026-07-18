@@ -69,3 +69,7 @@ footer:
   powered: false
 local_search:
   enable: true
+bookmark:
+  enable: true
+  color: "#000"
+  save: auto

@@ -12,3 +12,22 @@ B -->|No| D[Fix it!]
 ## are
 ### many
 #### titles
+
+这是一张图片：
+
+![图片描述](/hexo/test/a.png)
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	cout<<"Hello World!";
+	return 0;
+}
+```
+
+~~AAA~~ __BBB__ _CCC_ *DDD* **EEE**
+
+```markdown
+~~AAA~~ __BBB__ _CCC_ *DDD* **EEE**
+```
