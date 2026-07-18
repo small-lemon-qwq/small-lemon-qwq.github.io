@@ -67,3 +67,5 @@ symbols_count_time:
   item_text_total: false
 footer:
   powered: false
+local_search:
+  enable: true
