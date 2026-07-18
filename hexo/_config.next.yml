@@ -30,6 +30,11 @@ sidebar:
 scheme: Gemini
 social:
   GitHub: https://github.com/Cloudspots || fab fa-github
+  Luogu: https://www.luogu.com.cn/user/760689 || icon-luogu
+social_icons:
+  enable: true
+  icons_only: false
+  transition: true
 post_navigation: false
 codeblock:
   theme:
