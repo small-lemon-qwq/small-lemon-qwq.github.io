@@ -51,7 +51,7 @@ highlight:
   line_threshold: 0
   tab_replace: ''
   exclude_languages:
-    - example
+    - mermaid
   wrap: true
   hljs: false
 prismjs:
@@ -110,3 +110,10 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  awl: 4
+  wpm: 275

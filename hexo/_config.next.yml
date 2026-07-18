@@ -57,3 +57,13 @@ back2top:
 fancybox: true
 mediumzoom: false
 lazyload: false
+mermaid:
+  enable: true
+  theme:
+    light: default
+    dark: dark
+symbols_count_time:
+  separated_meta: true
+  item_text_total: false
+footer:
+  powered: false
