@@ -39,3 +39,23 @@
   -webkit-mask-size: contain;
   mask-size: contain;
 }
+details.callout{
+  border: 1px solid black;
+  padding: 0.2em 0.2em 0;
+  margin: 1em 0 1em .2em;
+}
+details.callout summary{
+  font-weight: bold;
+  margin: -0.2em -0.2em 0;
+  padding: 0.2em;
+}
+details[open].callout summary {
+  border-bottom: 1px solid black;
+  margin-bottom: 0.2em;
+}
+details[open].callout div.callout-content > :first-child{
+  margin-top: 0;
+}
+details[open].callout div.callout-content > :last-child{
+  margin-bottom: 0.2em;
+}
