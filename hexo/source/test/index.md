@@ -32,22 +32,11 @@ int main(){
 ~~AAA~~ __BBB__ _CCC_ *DDD* **EEE**
 ```
 
-{% callout info 你 %}
-{% callout info 这 %}
-{% callout info 个 %}
-{% callout info 支 %}
-{% callout info 持 %}
-{% callout info 嵌 %}
-{% callout info 套 %}
-{% callout info 吗 %}
-没被 hack 吧 qwq
-{% endcallout %}
-{% endcallout %}
-{% endcallout %}
-{% endcallout %}
-{% endcallout %}
-{% endcallout %}
-{% endcallout %}
-{% endcallout %}
+{% note info no-icon <!--recall--> %}
+Hello!
+{% note info no-icon recall %}
+Goodbye!
+{% endnote %}
+{% endnote %}
 
-{% iframe https://www.luogu.com.cn/ 100% 1200px %}
+{% iframe https://www.desmos.com/calculator/byiyxrfdv4 600px 400px%}
