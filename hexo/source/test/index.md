@@ -32,11 +32,21 @@ int main(){
 ~~AAA~~ __BBB__ _CCC_ *DDD* **EEE**
 ```
 
-{% note info no-icon <!--recall--> %}
-Hello!
-{% note info no-icon recall %}
-Goodbye!
+{% note info 禁止 %}
+{% note info 滥用 %}
+{% note info 嵌套 %}
+{% note info 否则 %}
+{% note info 会被 %}
+{% note info cz %}
+{% note info 封号 %}
+！
+{% endnote %}
+{% endnote %}
+{% endnote %}
+{% endnote %}
+{% endnote %}
 {% endnote %}
 {% endnote %}
 
 {% iframe https://www.desmos.com/calculator/byiyxrfdv4 600px 400px%}
+

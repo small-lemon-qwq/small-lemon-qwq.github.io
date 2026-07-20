@@ -39,23 +39,42 @@
   -webkit-mask-size: contain;
   mask-size: contain;
 }
-/* details.callout{
-  border: 1px solid black;
-  padding: 0.2em 0.2em 0;
-  margin: 1em 0 1em .2em;
+details{
+	border-top: none !important;
+	border-bottom: none !important;
+	border-radius: 0px !important;
+	padding: .2em 0 .5em 1em !important;
 }
-details.callout summary{
-  font-weight: bold;
-  margin: -0.2em -0.2em 0;
-  padding: 0.2em;
+details > summary::-webkit-details-marker {
+  display: none;
 }
-details[open].callout summary {
-  border-bottom: 1px solid black;
-  margin-bottom: 0.2em;
+details > summary::marker {
+  content: "";
 }
-details[open].callout div.callout-content > :first-child{
-  margin-top: 0;
+details > summary {
+  position: relative;
+  display: flex;
+  font-weight: 700;
 }
-details[open].callout div.callout-content > :last-child{
-  margin-bottom: 0.2em;
-} */
+details > summary::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 26px;
+  width: 9px;
+  height: 9px;
+
+  border-radius: 1px;
+  transform: translateY(-65%) rotate(-45deg);
+  transition: transform 0.2s ease;
+}
+details[open] > summary::after{
+  transform: translateY(-70%) rotate(45deg);
+}
+details.info > summary::after {
+  border-right: 4px solid #428bca;
+  border-bottom: 4px solid #428bca;
+}
+details.info > summary {
+  color: #428bca;
+}
