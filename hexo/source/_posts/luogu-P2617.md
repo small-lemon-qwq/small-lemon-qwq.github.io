@@ -7,7 +7,7 @@ tags: [Algorithm]
 {% btn https://www.luogu.com.cn/problem/P2617, 题目传送门, question fa-question-circle, 洛谷 P2617 %}
 
 
-已经有两分块题解了（加上一个莫队套分块的，应该是三个），但是我的做法很不一样，时空复杂度都很神秘。
+已经有两个分块题解了（加上一个莫队套分块的，应该是三个），但是我的做法很不一样，时空复杂度都很神秘。
 
 <!--more-->
 
