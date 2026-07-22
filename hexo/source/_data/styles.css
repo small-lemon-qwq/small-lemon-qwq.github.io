@@ -71,10 +71,7 @@ details > summary::after {
 details[open] > summary::after{
   transform: translateY(-70%) rotate(45deg);
 }
-details.info > summary::after {
-  border-right: 4px solid #428bca;
-  border-bottom: 4px solid #428bca;
-}
-details.info > summary {
-  color: #428bca;
-}
+details.info > summary::after {border-right: 4px solid #428bca;border-bottom: 4px solid #428bca;}
+details.info > summary {color: #428bca;}
+details.success > summary::after {border-right: 4px solid #5cb85c;border-bottom: 4px solid #5cb85c;}
+details.success > summary {color: #5cb85c;}

@@ -33,11 +33,11 @@ int main(){
 ```
 
 {% note info 禁止 %}
-{% note info 滥用 %}
-{% note info 嵌套 %}
-{% note info 否则 %}
-{% note info 会被 %}
-{% note info cz %}
+{% note danger 滥用 %}
+{% note warning 嵌套 %}
+{% note primary 否则 %}
+{% note default 会被 %}
+{% note success cz %}
 {% note info 封号 %}
 ！
 {% endnote %}
@@ -50,3 +50,4 @@ int main(){
 
 {% iframe https://www.desmos.com/calculator/byiyxrfdv4 600px 400px%}
 
+{% pdf /sqrt.pdf %}
