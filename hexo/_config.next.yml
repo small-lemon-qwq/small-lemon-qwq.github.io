@@ -86,4 +86,4 @@ note:
   light_bg_offset: 0
 pdf:
   enable: true
-  height: 800px
+  height: 600px
