@@ -93,4 +93,4 @@ int main(){
 
 接下来，我们考虑如何优化，对于每个 bitset，操作为单点修改，区间查询 $1$ 的个数，而映射到 bitset 上，这就形如单点 $\operatorname{popcount}$ 加或减 $1$，区间 $\operatorname{popcount}$ 和，我们发现这是简单分块题，分块可以做到 $O(1)$ 单点修改，$O(\sqrt{\frac nw})$ 区间查询，注意因为底层有一个 bitset，分块的长度会变小。
 
-然后就做完了，我们令 $B=\sqrt n$（这里不除以 $w$），可得最优时间复杂度：$O(n\sqrt n+\sqrt\frac nw\log n)$（推导略去），在 WORD-RAM 模型下，若设 $w=O(\log n)$，时间复杂度为 $O(n\sqrt{n\log\log n})$。感觉 $\sqrt{\log\log n}$ 可以当常数处理，算一下还不到 $3$。
+然后就做完了，我们令 $B=\sqrt n$（这里不除以 $w$），可得最优时间复杂度：$O(n\sqrt n+\sqrt\frac nw\log n)$（推导略去），在 WORD-RAM 模型下，若设 $w=O(\log n)$，时间复杂度为 $O(n\sqrt{n\log n})$。
