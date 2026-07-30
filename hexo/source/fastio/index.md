@@ -4,7 +4,48 @@ date: 2026-07-30 20:30:09
 ---
 
 勿要外传！
+{% note info %}
+#### note
+```cpp
+char*__restrict _IO_iptr;
+_IO_iptr=(char*)mmap(0,s.st_size,1,2,0,0);
+// use (*_IO_iptr++) to getchar.
 
+char _IO_buf[IO_buffer_size+100];
+unsigned _IO_optr=0;
+#define IO_flush() (fwrite(_IO_buf,1,_IO_optr,stdout),IO_optr=0)
+// use (_IO_buf[_IO_optr++]='a') to putchar.
+```
+
+```cpp
+const char _IO_imp[0x8000]={/*...*/};
+const unsigned _IO_omp[10000]={/*...*/};
+//two tables.
+```
+
+```cpp
+#define IO_auto_jump_space //auto jump space
+#undef IO_auto_jump_space //jump space by yourself
+
+#define IO_no_special //there is only numbers and spaces int the input
+#undef IO_no_special //may read letters or others
+
+#define IO_buffer_size (1<<16) //set output buffer size by yourself
+#ifndef IO_buffer_size
+#define IO_buffer_size (1u<<20)
+#endif
+```
+
+```cpp
+IO_pc('a'); //putchar
+_IO_pc_nochk('a'); //putchar and not check the buffer
+IO_flush(); //fflush(stdout)
+IO_pui(1235),IO_pi(-1235); //put (unsigned) int
+IO_pull(1235),IO_pll(-1235); //put (unsigned) long long
+int x=IO_gui(),y=IO_gi(); //read (unsigned) int
+int x=IO_gull(),y=IO_gll(); //read (unsigned) long long
+```
+{% endnote %}
 ```cpp
 #ifdef __unix__
 #define _GNU_SOURCE //for fwrite_unlocked
