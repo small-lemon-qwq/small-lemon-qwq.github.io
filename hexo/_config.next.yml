@@ -47,8 +47,8 @@ codeblock:
     enable: true
     style: default
   fold:
-    enable: false
-    height: 500
+    enable: true
+    height: 1000
   language: true
 back2top:
   enable: true
