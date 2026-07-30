@@ -27,7 +27,7 @@ const unsigned _IO_omp[10000]={/*...*/};
 #define IO_auto_jump_space //auto jump space
 #undef IO_auto_jump_space //jump space by yourself
 
-#define IO_no_special //there is only numbers and spaces int the input
+#define IO_no_special //there is only numbers and spaces in input the input
 #undef IO_no_special //may read letters or others
 
 #define IO_buffer_size (1<<16) //set output buffer size by yourself
@@ -44,6 +44,7 @@ IO_pui(1235),IO_pi(-1235); //put (unsigned) int
 IO_pull(1235),IO_pll(-1235); //put (unsigned) long long
 int x=IO_gui(),y=IO_gi(); //read (unsigned) int
 int x=IO_gull(),y=IO_gll(); //read (unsigned) long long
+IO_next(2); //jump 2 spaces
 ```
 {% endnote %}
 ```cpp
