@@ -9,6 +9,8 @@ tags: [Algorithm]
 
 考虑什么是科技，那应该就是 SIMD 了。
 
+<!--more-->
+
 {% note info 无关 %}
 
 推荐阅读：[SIMD 神力！！！！！](https://cloudspots.github.io/hexo/2026/07/16/simd-power/)。
