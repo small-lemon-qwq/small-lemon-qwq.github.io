@@ -1,7 +1,7 @@
 ---
-title: luogu-P4278
+title: SIMD 神力！！！！！
 date: 2026-07-31 16:12:44
-tags:
+tags: [Algorithm]
 ---
 注意到：
 
@@ -11,11 +11,11 @@ tags:
 
 {% note info 无关 %}
 
-推荐阅读：[SIMD 神力！！！！！](https://www.luogu.com.cn/article/ehz7uebw)。
+推荐阅读：[SIMD 神力！！！！！](https://cloudspots.github.io/hexo/2026/07/16/simd-power/)。
 
 这个数据范围非常小啊，我们考虑暴力能不能过。
 
-唉不是我的 $O(n\sqrt{n\log n}\times\log V)$ 咋没过啊？？？咋只有 $20$ 分啊？？？换了个 $O(n^{\frac 53}\times\log V)$ 做法，终于 $100$ 了，唉不是 hack 数据咋没过，不管了我要打暴力。然后我打了个[《SIMD 神力！！！！！》](https://www.luogu.com.cn/article/ehz7uebw) 中不加优化的 $O(n^2\log V)$ 做法（其实是我先想到的），又没过。
+唉不是我的 $O(n\sqrt{n\log n}\times\log V)$ 咋没过啊？？？咋只有 $20$ 分啊？？？换了个 $O(n^{\frac 53}\times\log V)$ 做法，终于 $100$ 了，唉不是 hack 数据咋没过，不管了我要打暴力。然后我打了个[《SIMD 神力！！！！！》](https://cloudspots.github.io/hexo/2026/07/16/simd-power/) 中不加优化的 $O(n^2\log V)$ 做法（其实是我先想到的），又没过。
 
 {% endnote %}
 
