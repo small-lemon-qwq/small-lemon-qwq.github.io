@@ -4,7 +4,7 @@ date: 2026-08-28 13:54:32
 tags: [Algorithm]
 ---
 
-{% iframe /bitaro.pdf %}
+{% pdf /bitaro.pdf %}
 
 （来源：本题[官方题解](https://www2.ioi-jp.org/camp/2025/2025-sp-tasks/contest4/migration-review.pdf)）
 
