@@ -3,6 +3,9 @@ title: SIMD 神力！！！！！
 date: 2026-07-31 16:12:44
 tags: [Algorithm]
 ---
+
+{% btn https://www.luogu.com.cn/problem/P4278, 题目传送门, question fa-question-circle, 洛谷 P4278 %}
+
 注意到：
 
 > 请使用常数较小的写法或者比较好的**科技**去过本题。

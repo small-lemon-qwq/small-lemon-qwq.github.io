@@ -4,6 +4,9 @@ date: 2026-07-15 20:32:39
 updated: 2026-07-15 20:32:39
 tags: [Algorithm]
 ---
+
+{% btn https://www.luogu.com.cn/problem/P3793, 题目传送门, question fa-question-circle, 洛谷 P3793 %}
+
 来发个 ST 表题解。
 
 众所周知，普通的 ST 表会爆空间，如果我们认为普通的 ST 表是 2-base 的，那我们可以用 32-base 来确保不会爆空间。32-base ST 表就是令 $f_{i,j}=\max\limits_{k=j}^{j+32^i-1} a_k$，$a$ 是原数组，这样查询的时候就要访问至多 $32$ 个 $f$ 的值。

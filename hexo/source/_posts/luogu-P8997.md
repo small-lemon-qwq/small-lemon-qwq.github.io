@@ -3,6 +3,8 @@ title: 题解：P8997 [CEOI 2022] Homework
 date: 2026-08-22 08:32:52
 tags: [Algorithm]
 ---
+
+{% btn https://www.luogu.com.cn/problem/P8997, 题目传送门, question fa-question-circle, 洛谷 P8997 %}
 怎么都要建表达式树，人类呢？？？
 
 <!--more-->

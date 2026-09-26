@@ -8,6 +8,8 @@ tags: [Algorithm]
 
 （来源：本题[官方题解](https://www2.ioi-jp.org/camp/2025/2025-sp-tasks/contest4/migration-review.pdf)）
 
+{% btn https://www.luogu.com.cn/problem/P11993, 题目传送门, question fa-question-circle, 洛谷 P11993 %}
+
 一个非常厉害的做法。
 
 <!--more-->
