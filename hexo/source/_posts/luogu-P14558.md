@@ -1,7 +1,7 @@
 ---
 title: 题解：P14558 [ROI 2013 Day2] 大规模预测
 date: 2026-09-26 19:10:17
-tags:
+tags: [Algorithm]
 ---
 
 {% btn https://www.luogu.com.cn/problem/P14558, 题目传送门, question fa-question-circle, 洛谷 P14558 %}
