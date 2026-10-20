@@ -1,13 +1,14 @@
 const Fastify=require('fastify');
 const cookie=require('@fastify/cookie');
 const session=require('@fastify/session');
-const main=require('./index');
 const{randomBytes,scrypt:cryptoScrypt,timingSafeEqual}=require('node:crypto');
 const{promisify}=require('node:util');
 const scrypt=promisify(cryptoScrypt);
 const isProd=process.env.NODE_ENV==='production';
 const db=require('./db');
-function init(){
+let main_app=null;
+function init(app){
+  main_app=app;
   db.pragma('journal_mode=WAL');
   db.exec(`
     CREATE TABLE IF NOT EXISTS users(
@@ -86,9 +87,9 @@ function init(){
     cleanExpired.run(Date.now());
   },60*60*1000);
   timer.unref();
-  main.app.register(cookie);
+  main_app.register(cookie);
   const secret=randomBytes(32).toString('hex');
-  main.app.register(session,{
+  main_app.register(session,{
     secret,
     cookieName:'sid',
     store:sqliteStore,
@@ -102,7 +103,7 @@ function init(){
       maxAge:7*24*60*60*1000
     }
   });
-  main.app.post('/register',async(req,rep)=>{
+  main_app.post('/register',async(req,rep)=>{
     const{username,password}=req.body||{};
     if(!validCredentials(username,password)){
       return rep.code(400).send({error:'data error'});
@@ -115,7 +116,7 @@ function init(){
     }
     return rep.code(201).send({message:'ok'});
   });
-  main.app.post('/login',async(req,rep)=>{
+  main_app.post('/login',async(req,rep)=>{
     const{username,password}=req.body||{};
     if(!validCredentials(username,password)){
       return rep.code(400).send({
@@ -123,8 +124,19 @@ function init(){
       });
     }
     const user=findUser.get(username.trim());
-    const suppliedHash=await scrypt(password,user?user.password_salt:secret,64);
-    const storedHash=user?Buffer.from(user.password_hash,'hex'):Buffer.alloc(64);
+    if(!user?.password_hash||!user?.password_salt){
+      return rep.code(401).send({
+        error:'invalid username or password'
+      });
+    }
+    const suppliedHash=await scrypt(password,user.password_salt,64);
+    const storedHash=Buffer.from(user.password_hash,'hex');
+    if(storedHash.length!==suppliedHash.length||
+       !timingSafeEqual(suppliedHash,storedHash)){
+      return rep.code(401).send({
+        error:'invalid username or password'
+      });
+    }
     if(!user||storedHash.length!==suppliedHash.length||!timingSafeEqual(suppliedHash,storedHash)){
       return rep.code(401).send({
         error:'invalid username or password'
@@ -137,12 +149,12 @@ function init(){
     });
     return{message:'ok'};
   });
-  main.app.post('/logout',async(req,rep)=>{
+  main_app.post('/logout',async(req,rep)=>{
     await req.session.destroy();
     rep.clearCookie('sid',{path:'/'});
     return{message:'ok'};
   });
-  main.app.addHook('onClose',async()=>{
+  main_app.addHook('onClose',async()=>{
     clearInterval(timer);
     db.close();
   });

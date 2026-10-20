@@ -2,13 +2,13 @@ const Fastify=require('fastify');
 const db=require('./db');
 let app=Fastify({logger:true,trustProxy: true});
 const user=require('./user')
-user.init();
+user.init(app);
 let listen=function(url,handler){
 	app.get(url,async(req,res)=>{
 		const uid=user.query_uid(req);
 		const re=handler(req.body||{},uid);
 		res.type(`${re.type}; charset=utf-8`);
-		String re_str=`<!DOCTYPE html>
+		let re_str=`<!DOCTYPE html>
 <html>
 <head>
 	<script>
