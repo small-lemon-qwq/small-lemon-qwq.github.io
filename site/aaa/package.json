@@ -1,0 +1,21 @@
+{
+  "name": "recoj",
+  "version": "1.0.0",
+  "description": "recall",
+  "license": "AGPL-3.0-only",
+  "author": "LL",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo ok",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.1.3",
+    "@fastify/session": "^11.1.4",
+    "@fastify/websocket": "^11.3.0",
+    "better-sqlite3": "^13.0.3",
+    "fastify": "^5.11.2",
+    "fastify-session-better-sqlite3-store": "^2.1.3"
+  }
+}
