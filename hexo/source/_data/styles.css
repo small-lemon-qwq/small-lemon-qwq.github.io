@@ -45,6 +45,7 @@ details{
 	border-bottom: none !important;
 	border-radius: 0px !important;
 	padding: .2em 0 .5em 1em !important;
+	margin-top: 1em;
 }
 details > summary::-webkit-details-marker {
   display: none;
