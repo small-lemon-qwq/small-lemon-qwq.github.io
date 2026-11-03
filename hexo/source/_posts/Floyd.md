@@ -24,9 +24,27 @@ def f(x:bool,y:bool,z:bool,n:int,A:list[list]):
     return tmp
 ```
 
+```mermaid
+flowchart TD
+    A["开始：输入 x、y、z、n、A"] --> B["复制 A 到 tmp"]
+    B --> C["将 tmp[i][i] 设为 0<br/>i = 1, ..., n"]
+    C --> D["按 x 确定 i 的遍历方向"]
+    D --> E{"还有下一个 i？"}
+    E -- 是 --> F["按 y 确定 j 的遍历方向"]
+    F --> G{"还有下一个 j？"}
+    G -- 是 --> H["按 z 确定 k 的遍历方向"]
+    H --> I{"还有下一个 k？"}
+    I -- 是 --> J["tmp[j][k] = min(tmp[j][k],<br/>tmp[j][i] + tmp[i][k])"]
+    J --> I
+    I -- 否 --> G
+    G -- 否 --> E
+    E -- 否 --> K["返回 tmp"]
+    K --> L["结束"]
+```
+
 求出所有 $(x_0,y_0,z_0,x_1,y_1,z_1)$（$[x_0,y_0,z_0]\neq[x_1,y_1,z_1]$），使得对于 $\forall A$（要求对应的图满足上述条件）满足 $f(x_0,y_0,z_0)\neq f(x_1,y_1,z_1)$。
 
-目前认为，仅有以下四组不满足条件：
+目前猜想，仅有以下四组不满足条件：
 
 ```plaintext
 0,0,1, 1,0,1
