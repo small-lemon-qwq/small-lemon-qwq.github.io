@@ -24,23 +24,34 @@ def f(x:bool,y:bool,z:bool,n:int,A:list[list]):
     return tmp
 ```
 
-```mermaid
-flowchart TD
-    A["开始：输入 x、y、z、n、A"] --> B["复制 A 到 tmp"]
-    B --> C["将 tmp[i][i] 设为 0<br/>i = 1, ..., n"]
-    C --> D["按 x 确定 i 的遍历方向"]
-    D --> E{"还有下一个 i？"}
-    E -- 是 --> F["按 y 确定 j 的遍历方向"]
-    F --> G{"还有下一个 j？"}
-    G -- 是 --> H["按 z 确定 k 的遍历方向"]
-    H --> I{"还有下一个 k？"}
-    I -- 是 --> J["tmp[j][k] = min(tmp[j][k],<br/>tmp[j][i] + tmp[i][k])"]
-    J --> I
-    I -- 否 --> G
-    G -- 否 --> E
-    E -- 否 --> K["返回 tmp"]
-    K --> L["结束"]
-```
+$\begin{array}{l}
+\mathbf{function}\ f(x,y,z,n,A)\\
+\quad \mathrm{tmp}\gets \operatorname{copy}(A)\\
+\quad \mathbf{for}\ i=1,\ldots,n:\\
+\qquad \mathrm{tmp}[i][i]\gets 0\\
+\quad I\gets
+\begin{cases}
+(1,2,\ldots,n), & x=0,\\
+(n,n-1,\ldots,1), & x\ne 0
+\end{cases}\\
+\quad J\gets
+\begin{cases}
+(1,2,\ldots,n), & y=0,\\
+(n,n-1,\ldots,1), & y\ne 0
+\end{cases}\\
+\quad K\gets
+\begin{cases}
+(1,2,\ldots,n), & z=0,\\
+(n,n-1,\ldots,1), & z\ne 0
+\end{cases}\\
+\quad \mathbf{for}\ i\in I\ \textbf{（按顺序）}:\\
+\qquad \mathbf{for}\ j\in J\ \textbf{（按顺序）}:\\
+\qquad\quad \mathbf{for}\ k\in K\ \textbf{（按顺序）}:\\
+\qquad\qquad \mathrm{tmp}[j][k]\gets
+\min\bigl(\mathrm{tmp}[j][k],\,
+\mathrm{tmp}[j][i]+\mathrm{tmp}[i][k]\bigr)\\
+\quad \mathbf{return}\ \mathrm{tmp}
+\end{array}$
 
 求出所有 $(x_0,y_0,z_0,x_1,y_1,z_1)$（$[x_0,y_0,z_0]\neq[x_1,y_1,z_1]$），使得对于 $\forall A$（要求对应的图满足上述条件）满足 $f(x_0,y_0,z_0)\neq f(x_1,y_1,z_1)$。
 
