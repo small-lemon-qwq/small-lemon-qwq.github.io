@@ -10,7 +10,7 @@ tags: [Algorithm]
 
 <!--more-->
 
-令 $f(x,y,z)$ 表示以下伪代码（`python`）的执行结果：
+令 $f(x,y,z)$ 表示以下 `python`或伪代码的执行结果：
 
 ```python
 def f(x:bool,y:bool,z:bool,n:int,A:list[list]):
