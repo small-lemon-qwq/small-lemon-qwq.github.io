@@ -5,6 +5,7 @@ tags: [Algorithm]
 ---
 
 {% btn https://www.luogu.com.cn/problem/P12922, 题目传送门, question fa-question-circle, 洛谷 P12922 %}
+
 我们充分发扬数学直觉，容易猜到答案乘以 $2$ 后一定是一个非负**整数**，所以我们将所有位置乘以 $2$ 避免实数计算。
 
 容易想到二分答案。考虑 `check` 怎么写。
